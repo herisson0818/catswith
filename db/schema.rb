@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_16_103654) do
+ActiveRecord::Schema.define(version: 2020_10_16_212920) do
 
   create_table "areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 2020_10_16_103654) do
     t.string "city"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "cat_favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "cat_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cat_id"], name: "index_cat_favorites_on_cat_id"
+    t.index ["user_id"], name: "index_cat_favorites_on_user_id"
   end
 
   create_table "cats", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -53,4 +62,6 @@ ActiveRecord::Schema.define(version: 2020_10_16_103654) do
     t.index ["token"], name: "index_users_on_token", unique: true
   end
 
+  add_foreign_key "cat_favorites", "cats"
+  add_foreign_key "cat_favorites", "users"
 end
