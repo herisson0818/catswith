@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
-  get 'cats/show'
-  get 'cats/create'
-  get 'cats/update'
-  get 'cats/destroy'
   namespace :api do
     namespace :v1 do
       resources :users, only: [:create, :show, :update]
+      resources :cats, only: [:create, :show, :update]
       post "/login", to: "sessions#create"
       delete "/logout", to: "sessions#destroy"
     end
