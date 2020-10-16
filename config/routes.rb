@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'cat_favorites/create'
+  get 'cat_favorites/destoroy'
   namespace :api do
     namespace :v1 do
       resources :users, only: [:create, :show, :update]
