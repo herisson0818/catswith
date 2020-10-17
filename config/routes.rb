@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  get 'cat_favorites/create'
-  get 'cat_favorites/destoroy'
   namespace :api do
     namespace :v1 do
       resources :users, only: [:create, :show, :update]
       resources :cats, only: [:create, :show, :update]
+      resources :cat_favorites, only: [:create, :destroy]
       post "/login", to: "sessions#create"
       delete "/logout", to: "sessions#destroy"
     end
