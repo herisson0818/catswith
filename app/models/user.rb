@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :feeding_cats, through: :feedings, source: :cat
   has_many :images
   has_many :cats, through: :images
+  has_many :likes
+  has_many :images, through: :likes
 end
