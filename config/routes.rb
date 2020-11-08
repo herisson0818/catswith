@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :cats, only: [:create, :show, :update]
       resources :cat_favorites, only: [:create, :destroy]
       resources :feedings, only: [:create, :destroy]
+      resources :images, only: [:create, :destroy, :show]
       post "/login", to: "sessions#create"
       delete "/logout", to: "sessions#destroy"
     end
