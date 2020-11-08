@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_19_125958) do
+ActiveRecord::Schema.define(version: 2020_10_19_131433) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -73,6 +73,16 @@ ActiveRecord::Schema.define(version: 2020_10_19_125958) do
     t.index ["user_id"], name: "index_feedings_on_user_id"
   end
 
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "cat_id", null: false
+    t.text "caption"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cat_id"], name: "index_images_on_cat_id"
+    t.index ["user_id"], name: "index_images_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nick_name", null: false
     t.string "last_name", null: false
@@ -97,4 +107,6 @@ ActiveRecord::Schema.define(version: 2020_10_19_125958) do
   add_foreign_key "cat_favorites", "users"
   add_foreign_key "feedings", "cats"
   add_foreign_key "feedings", "users"
+  add_foreign_key "images", "cats"
+  add_foreign_key "images", "users"
 end

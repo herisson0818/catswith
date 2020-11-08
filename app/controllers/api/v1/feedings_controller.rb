@@ -1,6 +1,8 @@
 module Api
   module V1
     class FeedingsController < ApplicationController
+      before_action :authenticate!
+
       def create
         feeding = current_user.feedings.new(feeding_params)
         if feeding.save

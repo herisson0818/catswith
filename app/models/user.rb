@@ -5,4 +5,6 @@ class User < ApplicationRecord
   has_many :cat_favorite_cats, through: :cat_favorites, source: :cat
   has_many :feedings
   has_many :feeding_cats, through: :feedings, source: :cat
+  has_many :images
+  has_many :cats, through: :images
 end
