@@ -21,9 +21,6 @@ module Api
         end
       end
 
-      def index
-      end
-
       private
 
       def like_params
