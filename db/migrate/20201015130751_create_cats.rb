@@ -9,8 +9,9 @@ class CreateCats < ActiveRecord::Migration[6.0]
       t.string :city
       t.string :favorite_thing
       t.string :is_trn
-
+      t.references :area, nul: false
       t.timestamps
     end
+    add_foreign_key :cats, :areas, column: :zip_code, primary_key: :zip_code
   end
 end
