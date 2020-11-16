@@ -11,7 +11,7 @@ module Spring
 
       def initialize(args)
         @args = args
-        @env  = Env.new
+        @env = Env.new
       end
     end
   end

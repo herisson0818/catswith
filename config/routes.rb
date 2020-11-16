@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "areas/create"
+  get "areas/show"
+  get "areas/index"
   namespace :api do
     namespace :v1 do
       resources :users, only: [:create, :show, :update]
@@ -7,6 +10,7 @@ Rails.application.routes.draw do
       resources :feedings, only: [:create, :destroy]
       resources :images, only: [:create, :destroy, :show]
       resources :likes, only: [:create, :destroy]
+      resources :areas, only: [:create, :show, :index, :update]
       post "/login", to: "sessions#create"
       delete "/logout", to: "sessions#destroy"
     end

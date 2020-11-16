@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_08_010858) do
+ActiveRecord::Schema.define(version: 2020_11_16_210115) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -33,9 +33,7 @@ ActiveRecord::Schema.define(version: 2020_11_08_010858) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.string "zip_code"
+  create_table "areas", primary_key: "zip_code", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "prefecture"
     t.string "city"
     t.datetime "created_at", precision: 6, null: false
@@ -55,13 +53,14 @@ ActiveRecord::Schema.define(version: 2020_11_08_010858) do
     t.string "name"
     t.integer "gender"
     t.date "birthday"
-    t.string "zip_code"
     t.string "prefecture"
     t.string "city"
     t.string "favorite_thing"
-    t.integer "is_trn"
+    t.boolean "is_trn"
+    t.bigint "area_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["area_id"], name: "index_cats_on_area_id"
   end
 
   create_table "feedings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
