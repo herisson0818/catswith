@@ -5,5 +5,5 @@ class Cat < ApplicationRecord
   has_many :users, through: :feedings
   has_many :images, dependent: :destroy
   has_many :users, through: :images
-  belongs_to :area, primary_key: :zip_code
+  belongs_to :area
 end
