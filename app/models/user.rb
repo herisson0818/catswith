@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :cats, through: :images
   has_many :likes, dependent: :destroy
   has_many :images, through: :likes
+  belongs_to :area
 end
