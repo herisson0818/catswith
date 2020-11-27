@@ -32,7 +32,7 @@ module Api
       end
 
       def cat_params
-        params.require(:cat).permit(:area_id, :name, :gender, :birthday, :prefecture, :city, :favorite_thing, :is_trn)
+        params.require(:cat).permit(:area_id, :name, :gender, :birthday, :favorite_thing, :is_trn)
       end
     end
   end

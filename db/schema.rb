@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_16_210115) do
+ActiveRecord::Schema.define(version: 2020_11_26_233551) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 2020_11_16_210115) do
 
   create_table "areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "zip_code", null: false
-    t.string "prefecture"
-    t.string "city"
+    t.string "prefecture", null: false
+    t.string "city", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -54,8 +54,6 @@ ActiveRecord::Schema.define(version: 2020_11_16_210115) do
     t.string "name"
     t.integer "gender"
     t.date "birthday"
-    t.string "prefecture"
-    t.string "city"
     t.string "favorite_thing"
     t.boolean "is_trn"
     t.bigint "area_id"

@@ -28,7 +28,7 @@ module Api
       private
 
       def image_params
-        params.require(:image).permit(:cat_id, :caption, :cat_photo)
+        params.require(:image).permit(:user_id, :cat_id, :caption, :cat_photo)
       end
     end
   end

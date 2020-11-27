@@ -12,6 +12,5 @@ class CreateCats < ActiveRecord::Migration[6.0]
       t.references :area, nul: false
       t.timestamps
     end
-    add_foreign_key :cats, :areas, column: :zip_code
   end
 end
