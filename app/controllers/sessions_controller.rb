@@ -1,5 +1,5 @@
-module Api
-  module V1
+#module Api
+#  module V1
     class SessionsController < ApplicationController
       skip_before_action :authenticate!, only: [:create]
       before_action :current_user, only: [:destroy]
@@ -26,5 +26,5 @@ module Api
         params.require(:session).permit(:email, :password)
       end
     end
-  end
-end
+#  end
+#end
