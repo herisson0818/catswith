@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_08_010858) do
+ActiveRecord::Schema.define(version: 2020_11_27_004122) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -34,10 +34,9 @@ ActiveRecord::Schema.define(version: 2020_11_08_010858) do
   end
 
   create_table "areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.string "zip_code"
-    t.string "prefecture"
-    t.string "city"
+    t.string "zip_code", null: false
+    t.string "prefecture", null: false
+    t.string "city", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -55,13 +54,12 @@ ActiveRecord::Schema.define(version: 2020_11_08_010858) do
     t.string "name"
     t.integer "gender"
     t.date "birthday"
-    t.string "zip_code"
-    t.string "prefecture"
-    t.string "city"
     t.string "favorite_thing"
-    t.integer "is_trn"
+    t.boolean "is_trn"
+    t.bigint "area_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["area_id"], name: "index_cats_on_area_id"
   end
 
   create_table "feedings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -108,6 +106,8 @@ ActiveRecord::Schema.define(version: 2020_11_08_010858) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "token"
+    t.bigint "area_id", null: false
+    t.index ["area_id"], name: "index_users_on_area_id"
     t.index ["token"], name: "index_users_on_token", unique: true
   end
 
@@ -120,4 +120,5 @@ ActiveRecord::Schema.define(version: 2020_11_08_010858) do
   add_foreign_key "images", "users"
   add_foreign_key "likes", "images"
   add_foreign_key "likes", "users"
+  add_foreign_key "users", "areas"
 end

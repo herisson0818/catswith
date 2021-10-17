@@ -9,7 +9,7 @@ class CreateCats < ActiveRecord::Migration[6.0]
       t.string :city
       t.string :favorite_thing
       t.string :is_trn
-
+      t.references :area, nul: false
       t.timestamps
     end
   end
